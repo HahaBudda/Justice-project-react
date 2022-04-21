@@ -1,0 +1,43 @@
+.cart {
+  border-top: #E2E2E2 solid 1px;
+  height: 110px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: sans-serif;
+  color:#181725;
+
+  &__img {
+    margin: 10px;
+
+  }
+
+  &__description {
+    display: flex;
+
+  }
+
+  &__title_wrapper {
+    display: flex;
+    flex-direction: column;
+    margin: 10px;
+
+  }
+
+  &__title {
+    font-size: 1.3rem;
+    min-width: 200px;
+  }
+
+  &__add__description {
+    margin-top: 5px;
+    font-size: 0.75rem;
+    color: #7C7C7C;
+  }
+
+  &__price {
+    font-size: 1.5rem;
+    margin: 50px 0 0 10px;
+  }
+
+}

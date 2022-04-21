@@ -1,0 +1,11 @@
+.button{
+margin: 20px;
+  font-size: 1.25rem;
+  font-family: sans-serif;
+  cursor: pointer;
+  font-weight: bold;
+}
+.button:hover{
+  transform: translateY(-3px);
+  transition: 0.5s;
+}
