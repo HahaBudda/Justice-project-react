@@ -1,30 +1,38 @@
 import React, {useState} from 'react';
 import CartProduct from "../CartProduct/CartProduct";
-import product from "../MockData/Product.js"
+import product from "../MockData/Product.js";
 
-
+import styles from './MainCategory.module.scss'
 import Button from "../Button/Button";
+import {useSelector} from "react-redux";
+
+import ModalAdd from "../Modal/ModalAdd";
+
 
 
 const MainContent = () => {
 
-  const [sort, setSort] = useState(product)
+  const [modalActive, setModalActive] = useState(false)
+
+  const catalog = useSelector((state) => state)
+  const [sort, setSort] = useState(catalog)
 
   const filter = (e) => {
     e.target.name === "All"
         ? setSort(product)
-        : setSort(product?.filter((el ) => el.category === e.target.name))
+        : setSort(product?.filter((el) => el.category === e.target.name))
   }
 
   return (
+      <>
       <main>
-        <div className="button">
+        <div className={styles.button}>
           <Button text='All' name="All" onClick={(e) => filter(e)}/>
           <Button text='Beverages' name="Beverages" onClick={(e) => filter(e)}/>
           <Button text='Fresh Fruits' name="Fresh Fruits" onClick={(e) => filter(e)}/>
           <Button text='Pasta' name="Pasta" onClick={(e) => filter(e)}/>
+          <Button text='Create a product' onClick={() => setModalActive(true)}/>
         </div>
-
         {sort.map(item => {
           return <CartProduct
               name={item.name}
@@ -34,6 +42,12 @@ const MainContent = () => {
           />
         })}
       </main>
+  {
+    modalActive
+    &&
+    <ModalAdd active={modalActive} setActive={setModalActive}/>
+  }
+  </>
   );
 };
 
